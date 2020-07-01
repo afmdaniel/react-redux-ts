@@ -17,7 +17,6 @@ function App() {
         <Media></Media>
         <Soma></Soma>
         <Sorteio></Sorteio>
-        <Sorteio></Sorteio>
       </div>
     </div>
   );
