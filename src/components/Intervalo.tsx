@@ -13,7 +13,7 @@ const Intervalo = () => {
                 </span>
                 <span>
                     <strong>Máximo:</strong>
-                    <input type="number" value={0}/>
+                    <input type="number" value={10}/>
                 </span>
             </div>
         </Card>
