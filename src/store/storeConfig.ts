@@ -1,20 +1,27 @@
 import { createStore, combineReducers } from '@reduxjs/toolkit'
+import { alterarNumeroAction, numerosState, ALTERAR_NUM_MIN, ALTERAR_NUM_MAX } from './actions/numeros'
+
+const initialState: numerosState = {
+    min: 0,
+    max: 20
+}
 
 const reducers = combineReducers({
-    numeros: function(state, action) {
-        console.log(`State ${state}`)
-        console.log(`Action ${action}`)
-        return {
-            min: 1,
-            max: 10
+    numeros: function(state: numerosState = initialState, action: alterarNumeroAction) {
+        switch (action.type) {
+            case ALTERAR_NUM_MIN:
+                return {
+                    ...state,
+                    min: action.payload
+                }
+            case ALTERAR_NUM_MAX:
+                return {
+                    ...state,
+                    max: action.payload
+                }
+            default:
+                return state
         }
-    },
-    nomes: function(state, action) {
-        return [
-            'Ana',
-            'Bia',
-            'Carlos'
-        ]
     }
 })
 
