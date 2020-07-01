@@ -9,13 +9,12 @@ import Card from './Card'
 
 type MediaProps = PropsFromRedux
 
-const Media = ({ numeros, dispatch }: MediaProps) => {
-    console.log(numeros)
+const Media = ({ min, max }: MediaProps) => {
     return (
         <Card title="Média dos Números" color='green'>
             <div>
                 <span>
-                    <strong>5</strong>
+                    <strong>{(max + min)/2}</strong>
                 </span>
             </div>
         </Card>
@@ -24,7 +23,8 @@ const Media = ({ numeros, dispatch }: MediaProps) => {
 
 const mapStateToProps = (state: RootState) => {
     return {
-        numeros: state.numeros
+        min: state.numeros.min,
+        max: state.numeros.max
     }
 }
 
