@@ -4,15 +4,13 @@ import './index.css';
 import App from './App';
 
 import { Provider } from 'react-redux'
-import configStore from './store/storeConfig'
-
-const store = configStore()
+import { store } from './store/storeConfig'
 
 ReactDOM.render(
-  <Provider store={store}>
-    <React.StrictMode>
+  <React.StrictMode>
+    <Provider store={store}>
       <App />
-    </React.StrictMode>
-  </Provider>,
+    </Provider>
+  </React.StrictMode>,
   document.getElementById('root')
 );

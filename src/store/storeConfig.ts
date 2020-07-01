@@ -19,8 +19,6 @@ const reducers = combineReducers({
 })
 
 // Cria novo estado a partir dos reducers
-function storeConfig() {
-    return createStore(reducers)
-}
+export const store = createStore(reducers)
 
-export default storeConfig
+export type RootState = ReturnType<typeof reducers>
