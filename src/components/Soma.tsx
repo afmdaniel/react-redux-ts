@@ -7,7 +7,6 @@ const Soma = () => {
         <Card title="Soma dos Números" color='blue'>
             <div>
                 <span>
-                    <span>Resultado: </span>
                     <strong>10</strong>
                 </span>
             </div>

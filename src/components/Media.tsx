@@ -7,7 +7,6 @@ const Media = () => {
         <Card title="Média dos Números" color='green'>
             <div>
                 <span>
-                    <span>Resultado: </span>
                     <strong>5</strong>
                 </span>
             </div>

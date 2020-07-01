@@ -7,7 +7,6 @@ const Sorteio = () => {
         <Card title="Sorteio dos Números" color='purple'>
             <div>
                 <span>
-                    <span>Resultado: </span>
                     <strong>7</strong>
                 </span>
             </div>
