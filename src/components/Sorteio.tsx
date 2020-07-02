@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { selectNumeros } from '../store/storeConfig'
+import { selectNumeros } from '../store/numerosSlice'
 
 import Card from './Card'
 
