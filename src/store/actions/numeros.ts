@@ -1,5 +1,4 @@
-export const ALTERAR_NUM_MIN = 'ALTERAR_NUM_MIN'
-export const ALTERAR_NUM_MAX = 'ALTERAR_NUM_MAX'
+import {ALTERAR_NUM_MAX, ALTERAR_NUM_MIN} from './actionTypes'
 
 //TYPE CHECK ACTION CREATORS
 export interface alterarNumeroAction {

@@ -1,0 +1,2 @@
+export const ALTERAR_NUM_MIN = 'ALTERAR_NUM_MIN'
+export const ALTERAR_NUM_MAX = 'ALTERAR_NUM_MAX'
