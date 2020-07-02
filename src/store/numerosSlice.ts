@@ -24,7 +24,7 @@ const numerosSlice = createSlice({
 
 // EXPORT ACTION CREATOR
 export const { alterarMaximo, alterarMinimo } = numerosSlice.actions
-export type alterarNumerosAction = typeof alterarMaximo | typeof alterarMinimo
+export type alterarNumerosActionCreator = typeof alterarMaximo | typeof alterarMinimo
 
 // EXPORT SELECTOR
 export const selectNumeros = (state: RootState) => state.numeros
