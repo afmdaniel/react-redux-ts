@@ -1,15 +1,12 @@
 import React from 'react'
-import { connect, ConnectedProps } from 'react-redux'
-import { RootState } from '../store/storeConfig'
-
-// TODO: refazer utilizados os hooks useSelector e useDispatch
-// TODO: refazer utilizando context API
+import { useSelector } from 'react-redux'
+import { selectNumeros } from '../store/storeConfig'
 
 import Card from './Card'
 
-type MediaProps = PropsFromRedux
-
-const Media = ({ min, max }: MediaProps) => {
+const Media = () => {
+    const { max, min } = useSelector(selectNumeros)
+    
     return (
         <Card title="Média dos Números" color='green'>
             <div>
@@ -21,14 +18,4 @@ const Media = ({ min, max }: MediaProps) => {
     )
 }
 
-const mapStateToProps = (state: RootState) => {
-    return {
-        min: state.numeros.min,
-        max: state.numeros.max
-    }
-}
-
-const connector = connect(mapStateToProps)
-type PropsFromRedux = ConnectedProps<typeof connector>
-
-export default connector(Media)
+export default Media

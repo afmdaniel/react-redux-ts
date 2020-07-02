@@ -1,12 +1,14 @@
 import React from 'react'
-import { connect, ConnectedProps } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { RootState } from '../store/storeConfig'
 
 import Card from './Card'
 
-type SomaProps = PropsFromRedux
+const selectNumeros = (state: RootState) => state.numeros
 
-const Soma = ({ min, max }: SomaProps) => {
+const Soma = () => {
+    const { max, min } = useSelector(selectNumeros)
+
     return (
         <Card title="Soma dos Números" color='blue'>
             <div>
@@ -18,14 +20,4 @@ const Soma = ({ min, max }: SomaProps) => {
     )
 }
 
-const mapStateToProps = (state: RootState) => {
-    return {
-        min: state.numeros.min,
-        max: state.numeros.max
-    }
-}
-
-const connector = connect(mapStateToProps)
-type PropsFromRedux = ConnectedProps<typeof connector>
-
-export default connector(Soma)
+export default Soma

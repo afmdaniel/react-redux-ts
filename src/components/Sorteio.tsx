@@ -1,16 +1,16 @@
 import React from 'react'
-import { connect, ConnectedProps } from 'react-redux'
-import { RootState } from '../store/storeConfig'
+import { useSelector } from 'react-redux'
+import { selectNumeros } from '../store/storeConfig'
 
 import Card from './Card'
-
-type SorteioProps = PropsFromRedux
 
 function randomBetween(min: number, max: number) {
     return Math.floor(Math.random()*(max - min + 1) + min)
 }
 
-const Sorteio = ({ max, min }: SorteioProps) => {
+const Sorteio = () => {
+    const { max, min } = useSelector(selectNumeros)
+    
     return (
         <Card title="Sorteio dos Números" color='purple'>
             <div>
@@ -22,14 +22,4 @@ const Sorteio = ({ max, min }: SorteioProps) => {
     )
 }
 
-const mapStateToProps = (state: RootState) => {
-    return {
-        min: state.numeros.min,
-        max: state.numeros.max
-    }
-}
-
-const connector = connect(mapStateToProps)
-type PropsFromRedux = ConnectedProps<typeof connector>
-
-export default connector(Sorteio)
+export default Sorteio

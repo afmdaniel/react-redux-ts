@@ -1,13 +1,10 @@
 import './Intervalo.css'
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { RootState } from '../store/storeConfig'
+import { selectNumeros } from '../store/storeConfig'
 
 import Card from './Card'
 import { alterarNumeroMinimo, alterarNumeroMaximo } from '../store/actions/numeros'
-
-// SELECTORS
-const selectNumeros = (state: RootState) => state.numeros
 
 const Intervalo = () => {
     const { min, max } = useSelector(selectNumeros)

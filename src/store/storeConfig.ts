@@ -5,7 +5,8 @@ const reducers = combineReducers({
     numeros: numeroReducer
 })
 
-// Cria novo estado a partir dos reducers
 export const store = createStore(reducers)
 
 export type RootState = ReturnType<typeof reducers>
+
+export const selectNumeros = (state: RootState) => state.numeros
