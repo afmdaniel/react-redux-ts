@@ -1,43 +1,46 @@
 import './Intervalo.css'
 import React from 'react'
-import { connect, ConnectedProps } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../store/storeConfig'
 
 import Card from './Card'
 import { alterarNumeroMinimo, alterarNumeroMaximo } from '../store/actions/numeros'
 
-type IntervaloProps = PropsFromRedux
+// SELECTORS
+const selectNumeros = (state: RootState) => state.numeros
 
-const Intervalo = ({ min, max, alterarMinimo, alterarMaximo }: IntervaloProps) => {
+const Intervalo = () => {
+    const { min, max } = useSelector(selectNumeros)
+    const dispatch = useDispatch()
+
+    const handleMinChange: React.ChangeEventHandler<HTMLInputElement> = e => {
+        dispatch(alterarNumeroMinimo(+e.target.value))
+    }
+
+    const handleMaxChange: React.ChangeEventHandler<HTMLInputElement> = e => {
+        dispatch(alterarNumeroMaximo(+e.target.value))
+    }
+
     return (
         <Card title="Intevalor de Números" color='red'>
             <div className="Intervalo">
                 <span>
                     <strong>Mínimo:</strong>
-                    <input type="number" value={min} onChange={e => alterarMinimo(+e.target.value)}/>
+                    <input 
+                        type="number"
+                        value={min}
+                        onChange={handleMinChange}/>
                 </span>
                 <span>
                     <strong>Máximo:</strong>
-                    <input type="number" value={max} onChange={e => alterarMaximo(+e.target.value)}/>
+                    <input 
+                        type="number"
+                        value={max}
+                        onChange={handleMaxChange}/>
                 </span>
             </div>
         </Card>
     )
 }
 
-const mapStateToProps = (state: RootState) => {
-    return {
-        min: state.numeros.min,
-        max: state.numeros.max
-    }
-}
-
-const mapDispatchToProps = {
-    alterarMinimo: (novoNumero: number) => alterarNumeroMinimo(novoNumero),
-    alterarMaximo: (novoNumero: number) => alterarNumeroMaximo(novoNumero)
-}
-
-const connector = connect(mapStateToProps, mapDispatchToProps)
-type PropsFromRedux = ConnectedProps<typeof connector>
-
-export default connector(Intervalo)
+export default Intervalo
