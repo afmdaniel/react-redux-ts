@@ -25,6 +25,8 @@ const Intervalo = () => {
                     <strong>Mínimo:</strong>
                     <input 
                         type="number"
+                        min={0}
+                        max={max}
                         value={min}
                         onChange={handleMinChange}/>
                 </span>
@@ -32,6 +34,7 @@ const Intervalo = () => {
                     <strong>Máximo:</strong>
                     <input 
                         type="number"
+                        min={min}
                         value={max}
                         onChange={handleMaxChange}/>
                 </span>
