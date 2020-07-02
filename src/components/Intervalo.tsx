@@ -1,7 +1,7 @@
 import './Intervalo.css'
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { alterarMaximo, alterarMinimo, selectNumeros } from '../store/numerosSlice'
+import { alterarMaximo, alterarMinimo, alterarNumerosAction, selectNumeros } from '../store/numerosSlice'
 
 
 import Card from './Card'
@@ -10,12 +10,10 @@ const Intervalo = () => {
     const { min, max } = useSelector(selectNumeros)
     const dispatch = useDispatch()
 
-    const handleMinChange: React.ChangeEventHandler<HTMLInputElement> = e => {
-        dispatch(alterarMinimo(+e.target.value))
-    }
-
-    const handleMaxChange: React.ChangeEventHandler<HTMLInputElement> = e => {
-        dispatch(alterarMaximo(+e.target.value))
+    const handleChange = (actionCreator: alterarNumerosAction) => {
+        return (e: React.ChangeEvent<HTMLInputElement>) => {
+            dispatch(actionCreator(+e.target.value))
+        }
     }
 
     return (
@@ -28,7 +26,7 @@ const Intervalo = () => {
                         min={0}
                         max={max}
                         value={min}
-                        onChange={handleMinChange}/>
+                        onChange={handleChange(alterarMinimo)}/>
                 </span>
                 <span>
                     <strong>Máximo:</strong>
@@ -36,7 +34,7 @@ const Intervalo = () => {
                         type="number"
                         min={min}
                         value={max}
-                        onChange={handleMaxChange}/>
+                        onChange={handleChange(alterarMaximo)}/>
                 </span>
             </div>
         </Card>
